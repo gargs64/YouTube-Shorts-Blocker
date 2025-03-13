@@ -4,14 +4,15 @@ function removeShorts() {
         el.style.display = 'none';
     });
 
-    // Remove Shorts from sidebar
+    // Remove Shorts from sidebar 
     document.querySelectorAll('ytd-guide-entry-renderer').forEach(el => {
-        if (el.innerText.includes('Shorts')) {
+        let title = el.querySelector('#endpoint'); // Ensure we check the right element
+        if (title && title.innerText.trim() === 'Shorts') {
             el.style.display = 'none';
         }
     });
 
-    // Remove individual Shorts video tiles
+    // Remove individual Shorts videos
     document.querySelectorAll('ytd-grid-video-renderer, ytd-rich-grid-media').forEach(video => {
         let badge = video.querySelector('ytd-thumbnail-overlay-time-status-renderer');
         if (badge && badge.innerText.includes('Shorts')) {
@@ -20,9 +21,9 @@ function removeShorts() {
     });
 }
 
-// Use MutationObserver to monitor page changes
+// Ensure Shorts get removed even if YouTube updates dynamically
 const observer = new MutationObserver(removeShorts);
 observer.observe(document.body, { childList: true, subtree: true });
 
-// Run the function initially
+// Run initially
 removeShorts();
