@@ -2,7 +2,7 @@ YouTube Shorts Blocker
 
 A simple Chrome extension that removes YouTube Shorts from the homepage and sidebar.
 
-Features
+Features    
 ✅ Blocks Shorts dynamically  
 ✅ Uses MutationObserver for efficiency  
 ✅ Works on all YouTube pages  
